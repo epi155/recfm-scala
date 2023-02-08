@@ -106,7 +106,7 @@ Commandline
 mvn recfm:generate
 ~~~
 
-Generated java class
+Generated scala class
 
 ~~~scala
 package org.example.sys.file
@@ -166,7 +166,7 @@ is `${project.build.resources[0].directory}`, ie **`src/main/resources`**
 : List of configuration files (required).
 
 `doc` or property `maven.recfm.doc`
-: Indicates whether or not to generate the javadoc documentation on setters and getters, default is **`false`**.
+: Indicates whether or not to generate the scaladoc documentation on setters and getters, default is **`false`**.
 
 `align` or property `maven.recfm.align`
 : Indicates the minimum alignment of numeric fields when numeric representation is required. The Default value is **4**,
@@ -385,7 +385,7 @@ addition to the alphanumeric ones. Numeric getters are prefixed with the return 
       - !Num { name: date , at: 9, len: 2, num: true }
 ~~~
 
-Generated java for *year* field
+Generated scala for *year* field
 
 ~~~scala
     final def year: String = ...

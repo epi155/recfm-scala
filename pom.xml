@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.epi155</groupId>
+    <artifactId>recfm-scala</artifactId>
+    <version>0.6.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>recfm scala implementation addon and lib</name>
+
+    <!-- mvn versions:set -DnewVersion=x.y.z -->
+    <!-- mvn release:clean -->
+    <!-- mvn versions:display-dependency-updates -->
+    <!-- mvn release:prepare -->
+    <!-- mvn release:perform -->
+    <!-- mvn release:update-versions -->
+    <!-- mvn dependency:tree -->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+    </properties>
+
+    <modules>
+        <module>recfm-scala-addon</module>
+        <module>recfm-scala-lib</module>
+    </modules>
+
+    <description>java class utilities for fixed format file I/O</description>
+    <url>https://github.com/epi155/recfm-scala</url>
+
+    <developers>
+        <developer>
+            <name>Enrico Pistolesi</name>
+            <email>epi155.dev@gmail.com</email>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/epi155/recfm-scala.git</connection>
+        <developerConnection>scm:git:https://github.com/epi155/recfm-scala.git</developerConnection>
+        <url>https://github.com/epi155/recfm-scala</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <profiles>
+        <profile>
+            <id>sonatype</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>sonatype-nexus-snapshots</id>
+                    <name>Sonatype Nexus Snapshots</name>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>sonatype-nexus-staging</id>
+                    <name>Nexus Release Repository</name>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                        <configuration>
+                            <keyname>5EB3664AFC3A6D35</keyname>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

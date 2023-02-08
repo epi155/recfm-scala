@@ -1,0 +1,53 @@
+packageName: com.example.syss.test
+classes:
+  - name: FooTest
+    length: 600
+    fields:
+      - !Abc { name: alpha01   , at:  1, len: 10 }
+      - !Abc { name: alpha02   , at: 11, len: 10, check: Ascii  }
+      - !Abc { name: alpha03   , at: 21, len: 10, check: Latin1 }
+      - !Abc { name: alpha04   , at: 31, len: 10, check: Valid }
+      - !Abc { name: alpha05   , at: 41, len: 10, check: None }
+
+      - !Num { name: digit01   , at: 51, len: 5, num: true }
+      - !Fil {                   at: 56, len: 5 }
+      - !Val { val: "12345"    , at: 61, len: 5 }
+
+      - !Cus { name: custom01  , at: 66, len: 5, align: RGT, init: ' ', pad: '0', check: DigitOrBlank }
+      - !Cus { name: custom02  , at: 71, len: 5, align: RGT, init: '0', pad: '0', check: Digit }
+      - !Cus { name: custom03  , at: 76, len: 5, align: LFT, init: ' ', pad: ' ', check: Ascii }
+      - !Cus { name: custom04  , at: 81, len: 5, align: LFT, init: ' ', pad: ' ', check: Latin1 }
+      - !Cus { name: custom05  , at: 86, len: 5, align: LFT, init: ' ', pad: ' ', check: Valid }
+      - !Cus { name: custom06  , at: 91, len: 5, align: LFT, init: ' ', pad: ' ', check: None }
+      - !Cus { name: custom07  , at: 96, len: 5, align: LFT, init: ' ', pad: ' ', regex: "[0-9a-f]{1,5}\\s*" }
+
+      - !Dom { name: domain01 ,  at: 101, len: 3, items: [ EUR, USD, CHF, GBP, JPY, CNH, CNY, HKD, ARS, BRL, RUB ] }
+      - !Abc { name: hackDom1  , at: 101, len: 3, red: true }
+
+      - !Fil {                   at: 104, len: 17 }
+#      - !Grp { name: group01   , at: 120, len: 100, fields: []}
+      - !Grp
+        name: group01
+        at: 121
+        len: 30
+        fields:
+          - !Abc { name: alpha01   , at: 121, len: 10 }
+          - !Num { name: digit01   , at: 131, len: 5 }
+          - !Fil {                   at: 136, len: 5 }
+          - !Val { val: "12345"    , at: 141, len: 5 }
+          - !Cus { name: custom01  , at: 146, len: 5 }
+      - !Grp
+        name: errors
+        at: 151
+        len: 450
+        fields:
+          - !Num { name: count     , at: 151, len: 5, num: true }
+          - !Occ
+            name: item
+            at: 156
+            len: 88
+            times: 5
+            fields:
+              - !Abc { name: code   , at: 156, len:  8 }
+              - !Abc { name: message, at: 164, len: 80 }
+          - !Fil {                    at: 596, len:  5 }

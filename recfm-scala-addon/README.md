@@ -665,7 +665,7 @@ trait FieldValidateHandler {
 
 When an error occurs, the `error` method is called with fieldValidateError detail.
 
-`FieldValidateError` in an interface with getter method
+`FieldValidateError` in a case class with fields
 ~~~scala
 case class FieldValidateError(
     name: String = null,               // field name, if named field

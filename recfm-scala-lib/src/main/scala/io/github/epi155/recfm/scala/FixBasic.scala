@@ -1,7 +1,7 @@
 package io.github.epi155.recfm.scala
 
 trait FixBasic {
-  def validate(handler: FieldValidateHandler): Boolean
+  def validateFails(handler: FieldValidateHandler): Boolean
 
-  def audit(handler: FieldValidateHandler): Boolean
+  def auditFails(handler: FieldValidateHandler): Boolean
 }

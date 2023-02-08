@@ -22,9 +22,9 @@ abstract class FixEngine(
 
   def encode = new String(rawData)
 
-  def validate(handler: FieldValidateHandler): Boolean = validateFields(handler)
+  def validateFails(handler: FieldValidateHandler): Boolean = validateFields(handler)
 
-  def audit(handler: FieldValidateHandler): Boolean = auditFields(handler)
+  def auditFails(handler: FieldValidateHandler): Boolean = auditFields(handler)
 
   protected def initialize(): Unit
 

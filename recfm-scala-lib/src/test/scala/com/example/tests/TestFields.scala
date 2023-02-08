@@ -84,7 +84,7 @@ class TestFields extends AnyFunSuite {
     assertThrows[FixError.NotMatchesException] {
       foo.custom07 = "three"
     }
-    foo.validate(it => onError(it))
+    foo.validateFails(it => onError(it))
   }
 
   test("Dom") {
@@ -129,5 +129,6 @@ class TestFields extends AnyFunSuite {
     assertThrows[ArrayIndexOutOfBoundsException] {  errs.item(6).code = "00" }
 
     println(foo)
+
   }
 }

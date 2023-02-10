@@ -18,9 +18,9 @@
         * [4.3.7. Group](#437)
         * [4.3.8. Occurs](#438)
 * [5. Special methods](#5)
-    * [5.1. `static ... decode(String s)`](#51)
-    * [5.2. `String encode()`](#52)
-    * [5.3. `String toString()`](#53)
+    * [5.1. `object def decode(s: String)`](#51)
+    * [5.2. `def encode: String`](#52)
+    * [5.3. `def toString: String`](#53)
     * [5.4. Validation method](#54)
 
 ## <a name="1">1. Introduction</a>

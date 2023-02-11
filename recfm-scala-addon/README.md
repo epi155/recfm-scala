@@ -106,7 +106,7 @@ Commandline
 mvn recfm:generate
 ~~~
 
-Generated scala class
+<a name="2-xmpl">Generated scala class</a>
 
 ~~~scala
 package org.example.sys.file
@@ -302,7 +302,7 @@ classes:
       - !Abc { name: louie, at: 51, len: 25 }
 ~~~
 
-Generated setter and getter
+<a name="431-xmpl">Generated setter and getter</a>
 
 ~~~scala
     final def huey: String = ...
@@ -385,7 +385,7 @@ addition to the alphanumeric ones. Numeric getters are prefixed with the return 
       - !Num { name: date , at: 9, len: 2, num: true }
 ~~~
 
-Generated scala for *year* field
+<a name="432-xmpl">Generated scala for *year* field</a>
 
 ~~~scala
     final def year: String = ...
@@ -545,7 +545,7 @@ or (yaml style):
 ~~~
 
 
-Group usage example:
+<a name="437-xmpl">Group usage example:</a>
 
 ~~~scala
     val bar = new BarReq()
@@ -613,7 +613,7 @@ Occurs definition example:
       - ...
 ~~~
 
-Occurs usage example:
+<a name="438-xmpl">Occurs usage example:</a>
 
 ~~~scala
     val resp=new FooResp()

@@ -13,13 +13,13 @@ classes:
       - !Fil {                   at: 56, len: 5 }
       - !Val { val: "12345"    , at: 61, len: 5 }
 
-      - !Cus { name: custom01  , at: 66, len: 5, align: RGT, init: ' ', pad: '0', check: DigitOrBlank }
-      - !Cus { name: custom02  , at: 71, len: 5, align: RGT, init: '0', pad: '0', check: Digit }
-      - !Cus { name: custom03  , at: 76, len: 5, align: LFT, init: ' ', pad: ' ', check: Ascii }
-      - !Cus { name: custom04  , at: 81, len: 5, align: LFT, init: ' ', pad: ' ', check: Latin1 }
-      - !Cus { name: custom05  , at: 86, len: 5, align: LFT, init: ' ', pad: ' ', check: Valid }
-      - !Cus { name: custom06  , at: 91, len: 5, align: LFT, init: ' ', pad: ' ', check: None }
-      - !Cus { name: custom07  , at: 96, len: 5, align: LFT, init: ' ', pad: ' ', regex: "[0-9a-f]{1,5}\\s*" }
+      - !Cus { name: custom01  , at: 66, len: 5, align: RGT, ini: ' ', pad: '0', check: DigitOrBlank }
+      - !Cus { name: custom02  , at: 71, len: 5, align: RGT, ini: '0', pad: '0', check: Digit }
+      - !Cus { name: custom03  , at: 76, len: 5, align: LFT, ini: ' ', pad: ' ', check: Ascii }
+      - !Cus { name: custom04  , at: 81, len: 5, align: LFT, ini: ' ', pad: ' ', check: Latin1 }
+      - !Cus { name: custom05  , at: 86, len: 5, align: LFT, ini: ' ', pad: ' ', check: Valid }
+      - !Cus { name: custom06  , at: 91, len: 5, align: LFT, ini: ' ', pad: ' ', check: None }
+      - !Cus { name: custom07  , at: 96, len: 5, align: LFT, ini: ' ', pad: ' ', regex: "[0-9a-f]{1,5}\\s*" }
 
       - !Dom { name: domain01 ,  at: 101, len: 3, items: [ EUR, USD, CHF, GBP, JPY, CNH, CNY, HKD, ARS, BRL, RUB ] }
       - !Abc { name: hackDom1  , at: 101, len: 3, red: true }

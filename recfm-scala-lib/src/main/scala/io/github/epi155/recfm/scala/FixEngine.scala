@@ -332,7 +332,7 @@ abstract class FixEngine(
       v < count
     }) {
       val c = rawData(u)
-      if (!(32 <= c && c < 127)) throw new FixError.NotAsciiException(c, u)
+      if (!(32 <= c && c < 127)) throw new FixError.NotAsciiException(c, u, 2)
       u += 1
       v += 1
     }
@@ -345,7 +345,7 @@ abstract class FixEngine(
       v < count
     }) {
       val c = rawData(u)
-      if (!('0' <= c && c <= '9')) throw new FixError.NotDigitException(c, u)
+      if (!('0' <= c && c <= '9')) throw new FixError.NotDigitException(c, u, 2)
       u += 1
       v += 1
     }
@@ -359,7 +359,7 @@ abstract class FixEngine(
       while ( {
         v < count
       }) {
-        if (rawData(u) != ' ') throw new FixError.NotBlankException(c, u + 1)
+        if (rawData(u) != ' ') throw new FixError.NotBlankException(c, u + 1, 2)
 
         u += 1
         v += 1
@@ -372,7 +372,7 @@ abstract class FixEngine(
         v < count
       }) {
         c = rawData(u)
-        if (!('0' <= c && c <= '9')) throw new FixError.NotDigitException(c, u + 1)
+        if (!('0' <= c && c <= '9')) throw new FixError.NotDigitException(c, u + 1, 2)
 
         u += 1
         v += 1
@@ -447,7 +447,7 @@ abstract class FixEngine(
     }) {
       val c = rawData(u)
       if (!(32 <= c && c < 127) && !(160 <= c && c <= 255))
-        throw new FixError.NotLatinException(c, u)
+        throw new FixError.NotLatinException(c, u, 2)
       u += 1
       v += 1
     }
@@ -512,12 +512,12 @@ abstract class FixEngine(
 
   protected def testArray(offset: Int, count: Int, domain: Array[String]): Unit = {
     val value = abc(offset, count)
-    if (!domain.search(value).isInstanceOf[scala.collection.Searching.Found]) throw new FixError.NotDomainException(value)
+    if (!domain.search(value).isInstanceOf[scala.collection.Searching.Found]) throw new FixError.NotDomainException(value, 2)
   }
 
   protected def testRegex(offset: Int, count: Int, regex: Regex): Unit = {
     val value = abc(offset, count)
-    if (!regex.matches(value)) throw new FixError.NotMatchesException(value)
+    if (!regex.matches(value)) throw new FixError.NotMatchesException(value, 2)
   }
 
   protected def testValid(offset: Int, count: Int): Unit = {
@@ -527,7 +527,7 @@ abstract class FixEngine(
       v < count
     }) {
       val c = rawData(u)
-      if (Character.isISOControl(c) || !Character.isDefined(c)) throw new FixError.NotValidException(c, u)
+      if (Character.isISOControl(c) || !Character.isDefined(c)) throw new FixError.NotValidException(c, u, 2)
       u += 1
       v += 1
     }
@@ -584,7 +584,7 @@ abstract class FixEngine(
     val raw = value.toCharArray
     for (u <- 0 until raw.length) {
       val c = raw(u)
-      if (!(32 <= c && c < 127)) throw new FixError.NotAsciiException(c, u)
+      if (!(32 <= c && c < 127)) throw new FixError.NotAsciiException(c, u, 4)
     }
   }
 
@@ -593,7 +593,7 @@ abstract class FixEngine(
     val raw = value.toCharArray
     for (u <- 0 until raw.length) {
       val c = raw(u)
-      if (!(32 <= c && c < 127) && !(160 <= c && c <= 255)) throw new FixError.NotLatinException(c, u)
+      if (!(32 <= c && c < 127) && !(160 <= c && c <= 255)) throw new FixError.NotLatinException(c, u, 4)
     }
   }
 
@@ -602,18 +602,18 @@ abstract class FixEngine(
     val raw = value.toCharArray
     for (u <- 0 until raw.length) {
       val c = raw(u)
-      if (Character.isISOControl(c) || !Character.isDefined(c)) throw new FixError.NotValidException(c, u)
+      if (Character.isISOControl(c) || !Character.isDefined(c)) throw new FixError.NotValidException(c, u, 4)
     }
   }
 
   protected def testArray(value: String, domain: Array[String]): Unit = {
     if (value == null) return
-    if (!domain.search(value).isInstanceOf[scala.collection.Searching.Found]) throw new FixError.NotDomainException(value)
+    if (!domain.search(value).isInstanceOf[scala.collection.Searching.Found]) throw new FixError.NotDomainException(value, 2)
   }
 
   protected def testRegex(value: String, regex: Regex): Unit = {
     if (value == null) return
-    if (!regex.matches(value)) throw new FixError.NotMatchesException(value)
+    if (!regex.matches(value)) throw new FixError.NotMatchesException(value, 2)
   }
 
   protected def testDigit(value: String): Unit = {
@@ -621,7 +621,7 @@ abstract class FixEngine(
     val raw = value.toCharArray
     for (u <- 0 until raw.length) {
       val c = raw(u)
-      if (!('0' <= c && c <= '9')) throw new FixError.NotDigitException(c, u)
+      if (!('0' <= c && c <= '9')) throw new FixError.NotDigitException(c, u, 2)
     }
   }
 
@@ -630,11 +630,11 @@ abstract class FixEngine(
     val raw = value.toCharArray
     if (raw(0) == ' ') for (u <- 1 until raw.length) {
       val c = raw(u)
-      if (c != ' ') throw new FixError.NotBlankException(c, u + 1)
+      if (c != ' ') throw new FixError.NotBlankException(c, u + 1, 4)
     }
     else for (u <- 0 until raw.length) {
       val c = raw(u)
-      if (!('0' <= c && c <= '9')) throw new FixError.NotDigitException(c, u + 1)
+      if (!('0' <= c && c <= '9')) throw new FixError.NotDigitException(c, u + 1, 4)
     }
   }
 
@@ -660,7 +660,7 @@ abstract class FixEngine(
 object FixEngine {
   private val FIELD_AT = "Field @"
   private val EXPECTED = " expected "
-  private val CHARS_FOUND = " chars , found "
+  private val CHARS_FOUND = " chars, found "
   private val FOR_FIELD_AT = "> for field @"
   private val INVALID_NUMERIC = "Invalid numeric value <"
   private val RECORD_LENGTH = "Record length "

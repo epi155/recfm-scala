@@ -51,3 +51,31 @@ classes:
               - !Abc { name: code   , at: 156, len:  8 }
               - !Abc { name: message, at: 164, len: 80 }
           - !Fil {                    at: 596, len:  5 }
+
+  - name: FooAlpha
+    length: 10
+    onOverflow: Error
+    onUnderflow: Error
+    fields:
+      - !Abc { name: strict, at: 1, len: 4, onOverflow: Error, onUnderflow: Error, check: Ascii }
+      - !Abc { name: weak  , at: 5, len: 4, onOverflow: Trunc, onUnderflow: Pad  , check: Latin1  }
+      - !Abc { name: utf8, at: 9, len: 1, check: Valid }
+      - !Abc { name: all , at: 10, len: 1, check: None }
+  - name: FooDigit
+    length: 10
+    fields:
+      - !Num { name: strict, at: 1, len: 4, onOverflow: Error, onUnderflow: Error }
+      - !Num { name: weak  , at: 5, len: 4, onOverflow: Trunc, onUnderflow: Pad   }
+      - !Cus { name: rex   , at: 9, len: 2, regex: "[0-9]*" }
+  - name: FooCustom
+    length: 10
+    fields:
+      - !Cus { name: fix  , at: 1, len: 2, align: LFT, ini: '.', onOverflow: Error, onUnderflow: Error  }
+      - !Cus { name: rgt  , at: 3, len: 3, align: RGT, pad: '0', ini: '*' }
+      - !Cus { name: lft  , at: 6, len: 2, align: LFT, pad: '*', ini: '.' }
+      - !Cus { name: dig  , at: 8, len: 2, align: RGT, pad: '0', ini: ' ', chk: DigitOrBlank }
+      - !Val { value: "X", at: 10, len: 1 }
+  - name: FooDom
+    length: 3
+    fields:
+      - !Dom { name: cur  , at: 1, len: 3, items: [ EUR, USD, CHF, GBP, JPY, CNH, CNY, HKD, ARS, BRL, RUB ] }

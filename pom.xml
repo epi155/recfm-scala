@@ -33,7 +33,7 @@
     </modules>
 
     <description>java class utilities for fixed format file I/O</description>
-    <url>https://github.com/epi155/recfm-scala</url>
+    <url>https://github.com/epi155/recfm-scala/tree/recfm-scala-0.6.0</url>
 
     <developers>
         <developer>

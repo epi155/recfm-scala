@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>recfm-scala-addon</artifactId>
-    <url>https://github.com/epi155/recfm-scala/tree/main/recfm-scala-addon</url>
+    <url>https://github.com/epi155/recfm-scala/tree/recfm-scala-0.6.0/recfm-scala-addon</url>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

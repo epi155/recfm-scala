@@ -3,7 +3,7 @@
     <parent>
         <artifactId>recfm-scala</artifactId>
         <groupId>io.github.epi155</groupId>
-        <version>0.6.0</version>
+        <version>0.6.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -58,7 +58,7 @@
                     <dependency>
                         <groupId>io.github.epi155</groupId>
                         <artifactId>recfm-scala-addon</artifactId>
-                        <version>0.6.0</version>
+                        <version>0.6.1-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
             </plugin>

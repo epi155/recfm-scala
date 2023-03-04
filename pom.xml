@@ -4,7 +4,7 @@
 
     <groupId>io.github.epi155</groupId>
     <artifactId>recfm-scala</artifactId>
-    <version>0.6.0</version>
+    <version>0.6.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>recfm scala implementation addon and lib</name>
 
@@ -50,7 +50,7 @@
         <connection>scm:git:git://github.com/epi155/recfm-scala.git</connection>
         <developerConnection>scm:git:https://github.com/epi155/recfm-scala.git</developerConnection>
         <url>https://github.com/epi155/recfm-scala</url>
-        <tag>recfm-scala-0.6.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <profiles>
